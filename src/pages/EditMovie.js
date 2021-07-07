@@ -7,7 +7,7 @@ import * as movieAPI from '../services/movieAPI';
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-
+    this.mounted = false;
     this.state = {
       status: 'loading',
       shouldRedirect: false,
@@ -19,21 +19,28 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
+    this.mounted = true;
     this.getMovie();
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   async handleSubmit(updatedMovie) {
     this.setState({ status: 'loading' });
     await movieAPI.updateMovie(updatedMovie);
-    this.setState({
-      shouldRedirect: true,
-    });
+    if (this.mounted) {
+      this.setState({
+        shouldRedirect: true,
+      });
+    }
   }
 
   async getMovie() {
     const { match: { params: { id } } } = this.props;
     const movie = await movieAPI.getMovie(id);
-    this.setState({ movie, status: '' });
+    if (this.mounted) this.setState({ movie, status: '' });
   }
 
   render() {
@@ -55,11 +62,19 @@ class EditMovie extends Component {
 }
 
 EditMovie.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+};
+
+EditMovie.defaultProps = {
   match: {
     params: {
-      id: PropTypes.string.isRequired,
+      id: '',
     },
-  }.isRequired,
+  },
 };
 
 export default EditMovie;

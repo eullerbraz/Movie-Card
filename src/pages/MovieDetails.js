@@ -8,7 +8,7 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
-
+    this.mounted = false;
     this.state = {
       loading: true,
       movie: {},
@@ -19,17 +19,24 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
+    this.mounted = true;
     this.fetchMovie();
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   async fetchMovie() {
     const { match: { params: { id } } } = this.props;
     this.setState({ loading: true });
     const requestMovie = await movieAPI.getMovie(id);
-    this.setState({
-      loading: false,
-      movie: requestMovie,
-    });
+    if (this.mounted) {
+      this.setState({
+        loading: false,
+        movie: requestMovie,
+      });
+    }
   }
 
   async deleteMovie() {
@@ -61,11 +68,19 @@ class MovieDetails extends Component {
 }
 
 MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+};
+
+MovieDetails.defaultProps = {
   match: {
     params: {
-      id: PropTypes.string.isRequired,
+      id: '',
     },
-  }.isRequired,
+  },
 };
 
 export default MovieDetails;
