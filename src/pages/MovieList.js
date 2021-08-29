@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
+import Logo from '../logo.png';
 
 import * as movieAPI from '../services/movieAPI';
 
@@ -34,9 +35,21 @@ class MovieList extends Component {
     if (loading) return (<Loading />);
 
     return (
-      <div data-testid="movie-list">
-        <Link to="movies/new">ADICIONAR CARTÃO</Link>
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+      <div data-testid="movie-list" className="body">
+        <header className="header">
+          <img
+            src={ Logo }
+            alt="Movie Card Logo"
+          />
+        </header>
+        <main className="movies-list">
+          {
+            movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)
+          }
+        </main>
+        <div className="add">
+          <Link to="movies/new" className="button">ADICIONAR CARTÃO</Link>
+        </div>
       </div>
     );
   }

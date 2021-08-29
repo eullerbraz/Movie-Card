@@ -1,5 +1,100 @@
-body {
-  background-color: whitesmoke;
+* {
+  border: 0;
   box-sizing: border-box;
+  font: inherit;
+  font-family: Arial , Helvetica , sans-serif;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }
 
+.body {
+  background-color: rgb(10, 10, 10);
+  height: fit-content;
+  position: relative;
+}
+
+.button {
+  background-color: red;
+  border-radius: 4px;
+  color: white;
+  padding: 10px;
+  width: max-content;
+}
+
+.header {
+  background-color: rgb(17, 17, 17);
+  display: flex;
+  height: 130px;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+}
+
+.header img {
+  height: 100%;
+}
+
+.movies-list {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
+  padding-top: 130px;
+}
+
+.movie-card {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  width: 70%;
+}
+
+.movie-card img {
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.info-container {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 48%;
+}
+
+.info-container div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-container h1 {
+  font-size: 44pt;
+  font-weight: 700;
+}
+
+.info-container h3 {
+  font-size: 26pt;
+}
+
+.info-container p {
+  font-size: 18pt;
+  text-align: center;
+}
+
+.info-container .button {
+  margin-top: 10px;
+}
+
+.add {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.add .button {
+  padding: 20px 80px;
+}
