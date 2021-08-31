@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
-import Loading from '../components/Loading';
-import Logo from '../logo.png';
-
+import { Loading, Header } from '../components';
 import * as movieAPI from '../services/movieAPI';
+import './MovieList.css';
 
 class MovieList extends Component {
   constructor() {
@@ -36,12 +35,7 @@ class MovieList extends Component {
 
     return (
       <div data-testid="movie-list" className="body">
-        <header className="header">
-          <img
-            src={ Logo }
-            alt="Movie Card Logo"
-          />
-        </header>
+        <Header />
         <main className="movies-list">
           {
             movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)
