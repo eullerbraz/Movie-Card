@@ -1,0 +1,60 @@
+.background {
+  background-image: url('../images/backgroundDetails.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.modal {
+  backdrop-filter: blur(3.5px);
+  height: 100%;
+  width: 100%;
+}
+
+.new-movie {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-size: 20pt;
+  height: 100%;
+  justify-content: center;
+  padding-top: 130px;
+  width: 100%;
+}
+
+.movie-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+}
+
+.movie-form .row {
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.movie-form .row label {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.row .input {
+  padding: 10px;
+  width: 70%;
+}
+
+.row div {
+  width: 35%;
+}
+
+.row div .button {
+  font-size: 24pt;
+  width: 100%;
+}

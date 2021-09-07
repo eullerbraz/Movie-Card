@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import Header from './Header';
 
 class Loading extends Component {
   render() {
     return (
-      <div>Carregando...</div>
+      <div className="body">
+        <Header />
+        <span className="loading">Carregando...</span>
+      </div>
     );
   }
 }

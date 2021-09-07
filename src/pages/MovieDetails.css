@@ -33,6 +33,7 @@
 .movie-info {
   font-size: 18pt;
   margin-top: 10px;
+  width: 100%;
 }
 
 .movie-info p {

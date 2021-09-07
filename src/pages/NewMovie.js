@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { MovieForm, Loading } from '../components';
+import { MovieForm, Loading, Header } from '../components';
 import * as movieAPI from '../services/movieAPI';
+import './NewMovie.css';
 
 class NewMovie extends Component {
   constructor(props) {
@@ -34,8 +35,13 @@ class NewMovie extends Component {
     }
 
     return (
-      <div data-testid="new-movie">
-        <MovieForm onSubmit={ this.handleSubmit } />
+      <div data-testid="new-movie" className="body background">
+        <div className="modal">
+          <Header />
+          <main className="new-movie">
+            <MovieForm onSubmit={ this.handleSubmit } />
+          </main>
+        </div>
       </div>
     );
   }

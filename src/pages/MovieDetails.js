@@ -17,6 +17,7 @@ class MovieDetails extends Component {
 
     this.fetchMovie = this.fetchMovie.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
+    this.imagePathCheck = this.imagePathCheck.bind(this);
   }
 
   componentDidMount() {
@@ -46,19 +47,27 @@ class MovieDetails extends Component {
     await movieAPI.deleteMovie(id);
   }
 
+  imagePathCheck() {
+    let { movie: { imagePath } } = this.state;
+
+    if (!imagePath.includes('https://')) {
+      imagePath = `../${imagePath}`;
+    }
+
+    return imagePath;
+  }
+
   render() {
     const { loading, movie } = this.state;
     const { match: { params: { id } } } = this.props;
     if (loading) return <Loading />;
-
-    const { imagePath } = movie;
 
     return (
       <div data-testid="movie-details" className="body background">
         <div className="modal">
           <Header />
           <main className="movie-details">
-            <img alt="Movie Cover" src={ `../${imagePath}` } />
+            <img alt="Movie Cover" src={ this.imagePathCheck() } />
             <MovieInfo movie={ movie } />
           </main>
           <div className="buttons-container">
