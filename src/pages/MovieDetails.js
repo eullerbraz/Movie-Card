@@ -69,12 +69,12 @@ class MovieDetails extends Component {
           <main className="movie-details">
             <img alt="Movie Cover" src={ this.imagePathCheck() } />
             <MovieInfo movie={ movie } />
+            <div className="buttons-container">
+              <Link to="/" className="button">VOLTAR</Link>
+              <Link to={ `/movies/${id}/edit` } className="button">EDITAR</Link>
+              <Link to="/" onClick={ this.deleteMovie } className="button">DELETAR</Link>
+            </div>
           </main>
-          <div className="buttons-container">
-            <Link to="/" className="button">VOLTAR</Link>
-            <Link to={ `/movies/${id}/edit` } className="button">EDITAR</Link>
-            <Link to="/" onClick={ this.deleteMovie } className="button">DELETAR</Link>
-          </div>
         </div>
       </div>
     );
