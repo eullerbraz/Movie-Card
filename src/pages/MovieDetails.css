@@ -31,7 +31,7 @@
 }
 
 .movie-info {
-  font-size: 18pt;
+  font-size: 1.3vw;
   margin-top: 10px;
   width: 100%;
 }
@@ -41,7 +41,7 @@
 }
 
 .titles {
-  font-size: 20pt;
+  font-size: 1.5vw;
   font-weight: 700;
   margin-right: 4px;
 }
